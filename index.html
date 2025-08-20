@@ -1,0 +1,1539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ultimate Media Editor - Free Online Photo & Video Editing Tools</title>
+    <meta name="description" content="Free online photo and video editor with AI capabilities. Edit, enhance, and transform your media files with our advanced browser-based tools.">
+    <meta name="keywords" content="photo editor, video editor, free online editor, AI editing, image enhancement, video processing">
+    <meta name="author" content="Ultimate Media Editor">
+    <meta property="og:title" content="Ultimate Media Editor - Free Online Photo & Video Editing">
+    <meta property="og:description" content="Edit your photos and videos for free with our advanced online tools.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://your-site.netlify.app/preview.jpg">
+    <link rel="canonical" href="https://your-site.netlify.app/">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #4361ee;
+            --secondary: #3a0ca3;
+            --accent: #f72585;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --success: #4cc9f0;
+            --warning: #ffba08;
+            --danger: #f94144;
+            --gray: #6c757d;
+            --light-gray: #e9ecef;
+            --premium: #ffd700;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7ff;
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+        
+        .logo-icon {
+            font-size: 2.2rem;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        
+        nav a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .auth-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .btn {
+            padding: 0.5rem 1.5rem;
+            border: none;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .btn-primary {
+            background-color: var(--accent);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background-color: #e51278;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid white;
+            color: white;
+        }
+        
+        .btn-outline:hover {
+            background-color: white;
+            color: var(--primary);
+        }
+        
+        .btn-premium {
+            background: linear-gradient(135deg, var(--premium), #ff8c00);
+            color: var(--dark);
+            font-weight: 700;
+        }
+        
+        .btn-premium:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(255, 215, 0, 0.3);
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 4rem 0;
+            text-align: center;
+            background: linear-gradient(rgba(67, 97, 238, 0.05), rgba(58, 12, 163, 0.1)), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%234361ee" fill-opacity="0.05"/><path d="M0 0L100 100" stroke="%234361ee" stroke-opacity="0.1" stroke-width="1"/><path d="M100 0L0 100" stroke="%234361ee" stroke-opacity="0.1" stroke-width="1"/></svg>');
+            background-size: cover;
+            position: relative;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--secondary);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            color: var(--gray);
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .btn-large {
+            padding: 0.8rem 2rem;
+            font-size: 1.1rem;
+        }
+        
+        /* Premium Banner */
+        .premium-banner {
+            background: linear-gradient(135deg, var(--premium), #ff8c00);
+            color: var(--dark);
+            padding: 1rem;
+            text-align: center;
+            font-weight: 600;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .premium-banner a {
+            color: var(--secondary);
+            text-decoration: underline;
+            font-weight: 700;
+            margin-left: 0.5rem;
+        }
+        
+        /* Features Section */
+        .section-title {
+            text-align: center;
+            margin: 3rem 0;
+            color: var(--secondary);
+            position: relative;
+        }
+        
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--accent);
+            margin: 0.5rem auto;
+            border-radius: 2px;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .feature-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .premium-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: var(--premium);
+            color: var(--dark);
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+        
+        .feature-icon {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            height: 120px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 3rem;
+            color: white;
+        }
+        
+        .feature-content {
+            padding: 1.5rem;
+        }
+        
+        .feature-content h3 {
+            margin-bottom: 0.5rem;
+            color: var(--secondary);
+        }
+        
+        /* Editor Tabs */
+        .editor-container {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            margin: 3rem 0;
+        }
+        
+        .editor-tabs {
+            display: flex;
+            background: var(--light-gray);
+            overflow-x: auto;
+        }
+        
+        .editor-tab {
+            padding: 1rem 2rem;
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--gray);
+            transition: all 0.3s;
+            white-space: nowrap;
+        }
+        
+        .editor-tab.active {
+            background: white;
+            color: var(--primary);
+            border-bottom: 3px solid var(--primary);
+        }
+        
+        .editor-content {
+            display: none;
+            padding: 2rem;
+            min-height: 500px;
+        }
+        
+        .editor-content.active {
+            display: block;
+        }
+        
+        .editor-interface {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .editor-sidebar {
+            width: 250px;
+            background: var(--light);
+            border-radius: 8px;
+            padding: 1.5rem;
+        }
+        
+        .editor-main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        
+        .tool-category {
+            margin-bottom: 1.5rem;
+        }
+        
+        .tool-category h4 {
+            margin-bottom: 0.8rem;
+            color: var(--secondary);
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--light-gray);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .tool-list {
+            list-style: none;
+        }
+        
+        .tool-item {
+            padding: 0.5rem 0;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: color 0.3s;
+            position: relative;
+        }
+        
+        .tool-item:hover {
+            color: var(--primary);
+        }
+        
+        .tool-item.premium:after {
+            content: "PRO";
+            background: var(--premium);
+            color: var(--dark);
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 0.1rem 0.4rem;
+            border-radius: 4px;
+            margin-left: auto;
+        }
+        
+        .preview-area {
+            background: var(--light);
+            border: 2px dashed var(--light-gray);
+            border-radius: 8px;
+            height: 400px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            gap: 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .preview-area i {
+            font-size: 3rem;
+            color: var(--gray);
+        }
+        
+        .preview-image {
+            max-width: 100%;
+            max-height: 100%;
+            display: none;
+        }
+        
+        .controls {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        /* SEO Tools Section */
+        .seo-section {
+            margin: 3rem 0;
+        }
+        
+        .seo-tabs {
+            display: flex;
+            background: var(--light-gray);
+            border-radius: 8px 8px 0 0;
+            overflow: hidden;
+        }
+        
+        .seo-tab {
+            padding: 1rem 1.5rem;
+            cursor: pointer;
+            font-weight: 600;
+            background: var(--light-gray);
+            transition: all 0.3s;
+        }
+        
+        .seo-tab.active {
+            background: white;
+            color: var(--primary);
+        }
+        
+        .seo-content {
+            display: none;
+            padding: 2rem;
+            background: white;
+            border-radius: 0 0 8px 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .seo-content.active {
+            display: block;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        
+        input, textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--light-gray);
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        
+        textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .generated-content {
+            background: var(--light);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 1.5rem;
+            position: relative;
+        }
+        
+        .copy-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            padding: 0.25rem 0.75rem;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        /* How to Use Section */
+        .steps {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+            margin: 3rem 0;
+        }
+        
+        .step-card {
+            background: white;
+            border-radius: 8px;
+            padding: 2rem;
+            width: 250px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+        
+        .step-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0 auto 1rem;
+        }
+        
+        /* Ad Spaces */
+        .ad-container {
+            background: white;
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 2rem 0;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+        
+        .ad-placeholder {
+            width: 100%;
+            height: 120px;
+            background: linear-gradient(45deg, var(--light-gray), #e9ecef);
+            border-radius: 4px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--gray);
+            font-weight: 600;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 3rem 0 1rem;
+            margin-top: 4rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 1.5rem;
+            color: var(--success);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-links a {
+            color: var(--light-gray);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--success);
+        }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--light-gray);
+            font-size: 0.9rem;
+        }
+        
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .modal-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            max-width: 500px;
+            width: 100%;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+        }
+        
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .close-modal {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--gray);
+        }
+        
+        /* PayPal Section */
+        .paypal-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin: 3rem 0;
+            text-align: center;
+        }
+        
+        .paypal-options {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .paypal-option {
+            background: var(--light);
+            padding: 1.5rem;
+            border-radius: 8px;
+            width: 250px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+        
+        .paypal-option h3 {
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+        
+        .paypal-button {
+            background: #0070ba;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 1rem;
+            font-weight: 600;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .editor-interface {
+                flex-direction: column;
+            }
+            
+            .editor-sidebar {
+                width: 100%;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            nav ul {
+                gap: 0.5rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .editor-tabs {
+                overflow-x: scroll;
+            }
+            
+            .editor-tab {
+                padding: 1rem;
+            }
+            
+            .paypal-options {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+        
+        /* Loading animation */
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+        
+        .loading {
+            animation: pulse 1.5s infinite;
+        }
+        
+        /* AI Processing Animation */
+        .ai-processing {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(67, 97, 238, 0.8);
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            color: white;
+            z-index: 10;
+        }
+        
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s ease-in-out infinite;
+            margin-bottom: 1rem;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        /* Breadcrumb */
+        .breadcrumb {
+            margin: 1rem 0;
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+        
+        .breadcrumb a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Premium Banner -->
+    <div class="premium-banner">
+        <span>Unlock Premium Features - No Watermarks, Faster Processing, Advanced AI Tools</span>
+        <a href="#" id="premium-link">Upgrade Now</a>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <span class="logo-icon"><i class="fas fa-film"></i></span>
+                    <span>Ultimate Media Editor</span>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#editor">Editor</a></li>
+                        <li><a href="#seo">SEO Tools</a></li>
+                        <li><a href="#monetization">Monetization</a></li>
+                    </ul>
+                </nav>
+                <div class="auth-buttons">
+                    <button class="btn btn-outline">Sign In</button>
+                    <button class="btn btn-primary">Sign Up</button>
+                    <button class="btn btn-premium">Premium</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Edit Photos & Videos Like a Pro</h1>
+                <p>The ultimate free online editor with every tool you need - from basic adjustments to advanced AI enhancements. No downloads required.</p>
+                <div class="hero-buttons">
+                    <button class="btn btn-primary btn-large" onclick="activateEditor('photo')"><i class="fas fa-image"></i> Edit Photos</button>
+                    <button class="btn btn-primary btn-large" onclick="activateEditor('video')"><i class="fas fa-video"></i> Edit Videos</button>
+                    <button class="btn btn-premium btn-large"><i class="fas fa-crown"></i> Try Premium</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ad Space -->
+    <div class="container">
+        <div class="ad-container">
+            <div class="ad-placeholder">
+                <span>Advertisement Space</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Features Section -->
+    <section class="container" id="features">
+        <h2 class="section-title">Powerful Editing Features</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="premium-badge">PRO</div>
+                <div class="feature-icon"><i class="fas fa-robot"></i></div>
+                <div class="feature-content">
+                    <h3>AI-Powered Tools</h3>
+                    <p>Automated background removal, object recognition, style transfer, image enhancement, and smart video editing with AI algorithms.</p>
+                </div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-image"></i></div>
+                <div class="feature-content">
+                    <h3>Photo Editing</h3>
+                    <p>Crop, resize, rotate, adjust brightness/contrast, apply filters, remove objects, retouch portraits, and add text or stickers.</p>
+                </div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-video"></i></div>
+                <div class="feature-content">
+                    <h3>Video Editing</h3>
+                    <p>Trim, cut, merge videos, add transitions, apply filters, adjust speed, add music, subtitles, and special effects.</p>
+                </div>
+            </div>
+            <div class="feature-card">
+                <div class="premium-badge">PRO</div>
+                <div class="feature-icon"><i class="fas fa-paint-brush"></i></div>
+                <div class="feature-content">
+                    <h3>Advanced Tools</h3>
+                    <p>Layers, masks, curves, levels, color grading, chroma key, motion tracking, and professional-grade effects.</p>
+                </div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-download"></i></div>
+                <div class="feature-content">
+                    <h3>Analytics & Export</h3>
+                    <p>Preview changes in real-time, compare before/after, and export in multiple formats and resolutions.</p>
+                </div>
+            </div>
+            <div class="feature-card">
+                <div class="premium-badge">PRO</div>
+                <div class="feature-icon"><i class="fas fa-cloud"></i></div>
+                <div class="feature-content">
+                    <h3>Cloud Saving</h3>
+                    <p>Save your projects to the cloud and access them from any device. No need to download large files.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Editor Section -->
+    <section class="container" id="editor">
+        <h2 class="section-title">Start Editing</h2>
+        <div class="editor-container">
+            <div class="editor-tabs">
+                <div class="editor-tab active" data-tab="photo"><i class="fas fa-image"></i> Photo Editor</div>
+                <div class="editor-tab" data-tab="video"><i class="fas fa-video"></i> Video Editor</div>
+                <div class="editor-tab" data-tab="ai"><i class="fas fa-robot"></i> AI Tools</div>
+            </div>
+            
+            <div class="editor-content active" id="photo-editor">
+                <div class="editor-interface">
+                    <div class="editor-sidebar">
+                        <div class="tool-category">
+                            <h4><i class="fas fa-sliders-h"></i> Basic Adjustments</h4>
+                            <ul class="tool-list">
+                                <li class="tool-item"><i class="fas fa-crop-alt"></i> Crop & Rotate</li>
+                                <li class="tool-item"><i class="fas fa-sun"></i> Brightness/Contrast</li>
+                                <li class="tool-item"><i class="fas fa-palette"></i> Saturation</li>
+                                <li class="tool-item"><i class="fas fa-adjust"></i> Exposure</li>
+                                <li class="tool-item"><i class="fas fa-balance-scale"></i> Color Balance</li>
+                            </ul>
+                        </div>
+                        <div class="tool-category">
+                            <h4><i class="fas fa-filter"></i> Filters & Effects</h4>
+                            <ul class="tool-list">
+                                <li class="tool-item"><i class="fas fa-prescription-bottle"></i> Preset Filters</li>
+                                <li class="tool-item"><i class="fas fa-landmark"></i> Vintage</li>
+                                <li class="tool-item"><i class="fab fa-instagram"></i> Instagram Style</li>
+                                <li class="tool-item premium"><i class="fas fa-paint-brush"></i> Artistic</li>
+                            </ul>
+                        </div>
+                        <div class="tool-category">
+                            <h4><i class="fas fa-robot"></i> AI Tools</h4>
+                            <ul class="tool-list">
+                                <li class="tool-item premium"><i class="fas fa-magic"></i> Enhance Quality</li>
+                                <li class="tool-item premium"><i class="fas fa-cut"></i> Remove Background</li>
+                                <li class="tool-item premium"><i class="fas fa-broom"></i> Remove Objects</li>
+                                <li class="tool-item premium"><i class="fas fa-user-circle"></i> Retouch Portrait</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="editor-main">
+                        <div class="preview-area">
+                            <i class="fas fa-image"></i>
+                            <p>Upload a photo to start editing</p>
+                            <button class="btn btn-primary" id="upload-image-btn">Upload Image</button>
+                            <img id="preview-img" class="preview-image" alt="Preview">
+                            <div class="ai-processing" id="photo-ai-processing">
+                                <div class="spinner"></div>
+                                <p>AI is processing your image...</p>
+                            </div>
+                        </div>
+                        <div class="controls">
+                            <button class="btn btn-outline"><i class="fas fa-undo"></i> Undo</button>
+                            <button class="btn btn-outline"><i class="fas fa-redo"></i> Redo</button>
+                            <button class="btn btn-primary"><i class="fas fa-save"></i> Save & Export</button>
+                            <button class="btn btn-premium" onclick="showPremiumModal()"><i class="fas fa-crown"></i> Remove Watermark</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="editor-content" id="video-editor">
+                <div class="editor-interface">
+                    <div class="editor-sidebar">
+                        <div class="tool-category">
+                            <h4><i class="fas fa-film"></i> Video Tools</h4>
+                            <ul class="tool-list">
+                                <li class="tool-item"><i class="fas fa-cut"></i> Trim & Cut</li>
+                                <li class="tool-item"><i class="fas fa-object-group"></i> Merge Videos</li>
+                                <li class="tool-item"><i class="fas fa-tachometer-alt"></i> Speed Adjustment</li>
+                                <li class="tool-item"><i class="fas fa-backward"></i> Reverse</li>
+                            </ul>
+                        </div>
+                        <div class="tool-category">
+                            <h4><i class="fas fa-music"></i> Audio</h4>
+                            <ul class="tool-list">
+                                <li class="tool-item"><i class="fas fa-music"></i> Add Music</li>
+                                <li class="tool-item premium"><i class="fas fa-microphone"></i> Voiceover</li>
+                                <li class="tool-item"><i class="fas fa-volume-up"></i> Volume Control</li>
+                                <li class="tool-item premium"><i class="fas fa-wave-square"></i> Audio Effects</li>
+                            </ul>
+                        </div>
+                        <div class="tool-category">
+                            <h4><i class="fas fa-star"></i> Effects</h4>
+                            <ul class="tool-list">
+                                <li class="tool-item"><i class="fas fa-exchange-alt"></i> Transitions</li>
+                                <li class="tool-item"><i class="fas fa-filter"></i> Filters</li>
+                                <li class="tool-item premium"><i class="fas fa-shapes"></i> Overlays</li>
+                                <li class="tool-item premium"><i class="fas fa-square"></i> Picture-in-Picture</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="editor-main">
+                        <div class="preview-area">
+                            <i class="fas fa-video"></i>
+                            <p>Upload a video to start editing</p>
+                            <button class="btn btn-primary" id="upload-video-btn">Upload Video</button>
+                            <video id="preview-video" class="preview-image" controls style="display: none;"></video>
+                            <div class="ai-processing" id="video-ai-processing">
+                                <div class="spinner"></div>
+                                <p>AI is processing your video...</p>
+                            </div>
+                        </div>
+                        <div class="controls">
+                            <button class="btn btn-outline"><i class="fas fa-undo"></i> Undo</button>
+                            <button class="btn btn-outline"><i class="fas fa-redo"></i> Redo</button>
+                            <button class="btn btn-primary"><i class="fas fa-download"></i> Export Video</button>
+                            <button class="btn btn-premium" onclick="showPremiumModal()"><i class="fas fa-crown"></i> HD Export</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="editor-content" id="ai-tools">
+                <div class="editor-interface">
+                    <div class="editor-sidebar">
+                        <div class="tool-category">
+                            <h4><i class="fas fa-camera"></i> AI Photo Tools</h4>
+                            <ul class="tool-list">
+                                <li class="tool-item premium"><i class="fas fa-expand"></i> Super Resolution</li>
+                                <li class="tool-item premium"><i class="fas fa-paint-roller"></i> Style Transfer</li>
+                                <li class="tool-item premium"><i class="fas fa-smile"></i> Face Enhancement</li>
+                                <li class="tool-item premium"><i class="fas fa-image"></i> Background Replacement</li>
+                            </ul>
+                        </div>
+                        <div class="tool-category">
+                            <h4><i class="fas fa-video"></i> AI Video Tools</h4>
+                            <ul class="tool-list">
+                                <li class="tool-item premium"><i class="fas fa-crosshairs"></i> Motion Tracking</li>
+                                <li class="tool-item premium"><i class="fas fa-closed-captioning"></i> Auto Captions</li>
+                                <li class="tool-item premium"><i class="fas fa-theater-masks"></i> Green Screen Effect</li>
+                                <li class="tool-item premium"><i class="fas fa-tv"></i> AI Video Upscaling</li>
+                            </ul>
+                        </div>
+                        <div class="tool-category">
+                            <h4><i class="fas fa-brain"></i> Advanced AI</h4>
+                            <ul class="tool-list">
+                                <li class="tool-item premium"><i class="fas fa-object-ungroup"></i> Object Recognition</li>
+                                <li class="tool-item premium"><i class="fas fa-eye"></i> Deepfake Detection</li>
+                                <li class="tool-item premium"><i class="fas fa-project-diagram"></i> Neural Filters</li>
+                                <li class="tool-item premium"><i class="fas fa-crop"></i> Smart Composition</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="editor-main">
+                        <div class="preview-area">
+                            <i class="fas fa-robot"></i>
+                            <p>Select an AI tool to get started</p>
+                            <p class="small">AI processing may take a few moments</p>
+                            <div class="ai-processing" id="ai-tools-processing">
+                                <div class="spinner"></div>
+                                <p>AI is processing your media...</p>
+                            </div>
+                        </div>
+                        <div class="controls">
+                            <button class="btn btn-outline"><i class="fas fa-eye"></i> Compare</button>
+                            <button class="btn btn-primary" onclick="simulateAI()"><i class="fas fa-magic"></i> Apply AI Magic</button>
+                            <button class="btn btn-premium" onclick="showPremiumModal()"><i class="fas fa-bolt"></i> Faster Processing</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEO Tools Section -->
+    <section class="container" id="seo">
+        <h2 class="section-title">SEO Tools for Netlify Sites</h2>
+        <div class="breadcrumb">
+            <a href="#home">Home</a> > <a href="#seo">SEO Tools</a>
+        </div>
+        
+        <div class="editor-container">
+            <div class="seo-tabs">
+                <div class="seo-tab active" data-tab="sitemap">Sitemap Generator</div>
+                <div class="seo-tab" data-tab="meta">Meta Tag Generator</div>
+                <div class="seo-tab" data-tab="robots">Robots.txt Tester</div>
+            </div>
+
+            <div class="seo-content active" id="sitemap">
+                <h3>Sitemap Generator</h3>
+                <p>Generate a sitemap.xml file for your website to help search engines discover your pages.</p>
+                
+                <form id="sitemap-form">
+                    <div class="form-group">
+                        <label for="website-url">Your Website URL</label>
+                        <input type="url" id="website-url" placeholder="https://yoursite.netlify.app" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="pages">List your pages (one per line)</label>
+                        <textarea id="pages" placeholder="/&#10;/about&#10;/contact&#10;/services" required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary">Generate Sitemap</button>
+                </form>
+                
+                <div class="generated-content" id="sitemap-result" style="display: none;">
+                    <button class="copy-btn" onclick="copyContent('sitemap-content')">Copy</button>
+                    <pre id="sitemap-content"></pre>
+                </div>
+            </div>
+
+            <div class="seo-content" id="meta">
+                <h3>Meta Tag Generator</h3>
+                <p>Generate optimized meta tags for your web pages to improve SEO.</p>
+                
+                <form id="meta-form">
+                    <div class="form-group">
+                        <label for="page-title">Page Title</label>
+                        <input type="text" id="page-title" placeholder="Ultimate Photo Editor - Free Online Tool" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="page-description">Meta Description</label>
+                        <textarea id="page-description" placeholder="Edit your photos online for free with our advanced tools. No registration required." required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="page-keywords">Keywords (comma separated)</label>
+                        <input type="text" id="page-keywords" placeholder="photo editor, image editing, online tool, free">
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary">Generate Meta Tags</button>
+                </form>
+                
+                <div class="generated-content" id="meta-result" style="display: none;">
+                    <button class="copy-btn" onclick="copyContent('meta-content')">Copy</button>
+                    <pre id="meta-content"></pre>
+                </div>
+            </div>
+
+            <div class="seo-content" id="robots">
+                <h3>Robots.txt Tester</h3>
+                <p>Generate and test a robots.txt file for your website.</p>
+                
+                <form id="robots-form">
+                    <div class="form-group">
+                        <label for="robots-url">Your Website URL</label>
+                        <input type="url" id="robots-url" placeholder="https://yoursite.netlify.app" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="disallow-paths">Paths to disallow (one per line)</label>
+                        <textarea id="disallow-paths" placeholder="/admin&#10;/private"></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary">Generate Robots.txt</button>
+                </form>
+                
+                <div class="generated-content" id="robots-result" style="display: none;">
+                    <button class="copy-btn" onclick="copyContent('robots-content')">Copy</button>
+                    <pre id="robots-content"></pre>
+                </div>
+            </div>
+        </div>
+
+        <div class="seo-section">
+            <h3>How to Get Your Netlify Site Indexed on Google</h3>
+            
+            <div class="steps">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <h4>Submit to Google Search Console</h4>
+                    <p>Add your property to Google Search Console and submit your sitemap for indexing.</p>
+                </div>
+                
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <h4>Create Quality Content</h4>
+                    <p>Ensure your site has valuable, original content that people will want to link to.</p>
+                </div>
+                
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <h4>Build Backlinks</h4>
+                    <p>Get other websites to link to your content to increase authority.</p>
+                </div>
+                
+                <div class="step-card">
+                    <div class="step-number">4</div>
+                    <h4>Optimize Page Speed</h4>
+                    <p>Ensure your site loads quickly on both desktop and mobile devices.</p>
+                </div>
+            </div>
+            
+            <div class="step-card">
+                <div class="step-number">5</div>
+                <h4>Use Custom Domain</h4>
+                <p>Consider using a custom domain instead of the netlify.app subdomain for better SEO.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Monetization Section -->
+    <section class="container" id="monetization">
+        <h2 class="section-title">Monetization Options</h2>
+        
+        <div class="paypal-section">
+            <h3>Integrate PayPal for Direct Income</h3>
+            <p>Start earning money from your website by integrating PayPal payment options</p>
+            
+            <div class="paypal-options">
+                <div class="paypal-option">
+                    <h4>One-time Donations</h4>
+                    <p>Allow your users to support your project with one-time donations</p>
+                    <!-- Replace with your actual PayPal donation button code -->
+                    <a href="https://www.paypal.com/donate?business=YOUR_EMAIL&item_name=Support+Ultimate+Media+Editor&currency_code=USD" 
+                       class="paypal-button" target="_blank">
+                        <i class="fab fa-paypal"></i> Donate Now
+                    </a>
+                </div>
+                
+                <div class="paypal-option">
+                    <h4>Premium Subscriptions</h4>
+                    <p>Offer premium features through monthly or yearly subscriptions</p>
+                    <!-- Replace with your actual PayPal subscription button code -->
+                    <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=YOUR_BUTTON_ID" 
+                       class="paypal-button" target="_blank">
+                        <i class="fab fa-paypal"></i> Subscribe
+                    </a>
+                </div>
+                
+                <div class="paypal-option">
+                    <h4>Single Purchases</h4>
+                    <p>Sell digital products or one-time access to premium tools</p>
+                    <!-- Replace with your actual PayPal buy now button code -->
+                    <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=YOUR_BUTTON_ID" 
+                       class="paypal-button" target="_blank">
+                        <i class="fab fa-paypal"></i> Buy Now
+                    </a>
+                </div>
+            </div>
+            
+            <div style="margin-top: 2rem; padding: 1.5rem; background: var(--light); border-radius: 8px;">
+                <h4>How to Set Up PayPal on Netlify:</h4>
+                <ol>
+                    <li>Create a PayPal Business account at <a href="https://www.paypal.com" target="_blank">paypal.com</a></li>
+                    <li>Go to PayPal Buttons section and create buttons for your payment options</li>
+                    <li>Copy the generated HTML code for each button</li>
+                    <li>Replace the placeholder buttons above with your actual PayPal button code</li>
+                    <li>Test the payment process to ensure everything works correctly</li>
+                </ol>
+            </div>
+        </div>
+        
+        <div class="ad-container">
+            <h3>Advertisement Revenue</h3>
+            <p>Monetize your traffic through advertisement networks like Google AdSense</p>
+            <div class="ad-placeholder">
+                <span>Google AdSense Advertisement</span>
+            </div>
+            <p style="margin-top: 1rem; font-size: 0.9rem;">To add real ads, sign up for Google AdSense and replace this placeholder with your ad code</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Ultimate Media Editor</h3>
+                    <p>The most comprehensive free online photo and video editor with AI capabilities.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#editor">Editor</a></li>
+                        <li><a href="#seo">SEO Tools</a></li>
+                        <li><a href="#monetization">Monetization</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Resources</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Tutorials</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Support</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Legal</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Copyright</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Ultimate Media Editor. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Premium Modal -->
+    <div class="modal" id="premium-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Upgrade to Premium</h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="feature-content">
+                <h3>Unlock All Features</h3>
+                <ul>
+                    <li>Remove all watermarks from exports</li>
+                    <li>Access to advanced AI tools</li>
+                    <li>Priority processing - 3x faster</li>
+                    <li>HD and 4K export options</li>
+                    <li>Cloud storage for your projects</li>
+                    <li>Advanced editing tools</li>
+                </ul>
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button class="btn btn-premium btn-large">Subscribe Now - $9.99/month</button>
+                    <p style="margin-top: 1rem; font-size: 0.9rem;">7-day money-back guarantee</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Tab switching functionality
+        document.querySelectorAll('.editor-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active class from all tabs and contents
+                document.querySelectorAll('.editor-tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.editor-content').forEach(c => c.classList.remove('active'));
+                
+                // Add active class to clicked tab
+                tab.classList.add('active');
+                
+                // Show corresponding content
+                const tabId = tab.getAttribute('data-tab');
+                document.getElementById(`${tabId}-editor`).classList.add('active');
+            });
+        });
+        
+        // SEO tabs functionality
+        document.querySelectorAll('.seo-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active class from all tabs and contents
+                document.querySelectorAll('.seo-tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.seo-content').forEach(c => c.classList.remove('active'));
+                
+                // Add active class to clicked tab
+                tab.classList.add('active');
+                
+                // Show corresponding content
+                const tabId = tab.getAttribute('data-tab');
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+        
+        // Function to activate editor from hero buttons
+        function activateEditor(type) {
+            // Remove active class from all tabs and contents
+            document.querySelectorAll('.editor-tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.editor-content').forEach(c => c.classList.remove('active'));
+            
+            // Activate the selected editor tab
+            const tab = document.querySelector(`.editor-tab[data-tab="${type}"]`);
+            tab.classList.add('active');
+            document.getElementById(`${type}-editor`).classList.add('active');
+            
+            // Scroll to editor section
+            document.getElementById('editor').scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        // Simulate AI processing
+        function simulateAI() {
+            const processingElement = document.getElementById('ai-tools-processing');
+            processingElement.style.display = 'flex';
+            
+            setTimeout(() => {
+                processingElement.style.display = 'none';
+                alert('AI processing complete! This is a simulation. In a real application, your media would be enhanced now.');
+            }, 3000);
+        }
+        
+        // Show premium modal
+        function showPremiumModal() {
+            document.getElementById('premium-modal').style.display = 'flex';
+        }
+        
+        // Close modal
+        document.querySelector('.close-modal').addEventListener('click', () => {
+            document.getElementById('premium-modal').style.display = 'none';
+        });
+        
+        // Click outside modal to close
+        window.addEventListener('click', (e) => {
+            if (e.target === document.getElementById('premium-modal')) {
+                document.getElementById('premium-modal').style.display = 'none';
+            }
+        });
+        
+        // Premium link
+        document.getElementById('premium-link').addEventListener('click', (e) => {
+            e.preventDefault();
+            showPremiumModal();
+        });
+        
+        // Tool item click - show premium for premium features
+        document.querySelectorAll('.tool-item.premium').forEach(item => {
+            item.addEventListener('click', () => {
+                showPremiumModal();
+            });
+        });
+        
+        // Image upload simulation
+        document.getElementById('upload-image-btn').addEventListener('click', () => {
+            // In a real app, this would open a file dialog
+            // For demo purposes, we'll use a sample image
+            const previewImg = document.getElementById('preview-img');
+            previewImg.src = 'https://via.placeholder.com/600x400?text=Uploaded+Image';
+            previewImg.style.display = 'block';
+            
+            // Hide the upload prompt
+            const uploadPrompt = previewImg.previousElementSibling;
+            uploadPrompt.previousElementSibling.style.display = 'none';
+            uploadPrompt.style.display = 'none';
+        });
+        
+        // Video upload simulation
+        document.getElementById('upload-video-btn').addEventListener('click', () => {
+            // In a real app, this would open a file dialog
+            alert('Video upload dialog would appear here. For this demo, we are simulating the feature.');
+        });
+        
+        // Add loading state to buttons for better UX
+        document.querySelectorAll('.btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                if (this.classList.contains('btn-premium') || this.id === 'upload-image-btn' || this.id === 'upload-video-btn') {
+                    return; // Skip for these buttons
+                }
+                
+                const originalText = this.innerHTML;
+                this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+                this.classList.add('loading');
+                
+                setTimeout(() => {
+                    this.innerHTML = originalText;
+                    this.classList.remove('loading');
+                }, 1500);
+            });
+        });
+        
+        // Initialize tooltips for premium features
+        document.querySelectorAll('.premium-badge, .tool-item.premium').forEach(el => {
+            el.setAttribute('title', 'Premium feature - upgrade to access');
+        });
+        
+        // Sitemap generator
+        document.getElementById('sitemap-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const url = document.getElementById('website-url').value;
+            const pages = document.getElementById('pages').value.split('\n');
+            
+            const domain = url.replace(/https?:\/\/(www\.)?/, '').replace(/\/$/, '');
+            
+            let sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n`;
+            sitemap += `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n`;
+            
+            pages.forEach(page => {
+                if (page.trim()) {
+                    const cleanPage = page.trim().replace(/^\//, '');
+                    sitemap += `  <url>\n`;
+                    sitemap += `    <loc>https://${domain}/${cleanPage}</loc>\n`;
+                    sitemap += `    <lastmod>${new Date().toISOString().split('T')[0]}</lastmod>\n`;
+                    sitemap += `    <changefreq>monthly</changefreq>\n`;
+                    sitemap += `    <priority>${cleanPage === '' ? '1.0' : '0.8'}</priority>\n`;
+                    sitemap += `  </url>\n`;
+                }
+            });
+            
+            sitemap += `</urlset>`;
+            
+            document.getElementById('sitemap-content').textContent = sitemap;
+            document.getElementById('sitemap-result').style.display = 'block';
+        });
+        
+        // Meta tag generator
+        document.getElementById('meta-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const title = document.getElementById('page-title').value;
+            const description = document.getElementById('page-description').value;
+            const keywords = document.getElementById('page-keywords').value;
+            
+            let metaTags = `<!-- Primary Meta Tags -->\n`;
+            metaTags += `<title>${title}</title>\n`;
+            metaTags += `<meta name="title" content="${title}">\n`;
+            metaTags += `<meta name="description" content="${description}">\n`;
+            
+            if (keywords) {
+                metaTags += `<meta name="keywords" content="${keywords}">\n`;
+            }
+            
+            metaTags += `\n<!-- Open Graph / Facebook -->\n`;
+            metaTags += `<meta property="og:type" content="website">\n`;
+            metaTags += `<meta property="og:title" content="${title}">\n`;
+            metaTags += `<meta property="og:description" content="${description}">\n`;
+            
+            metaTags += `\n<!-- Twitter -->\n`;
+            metaTags += `<meta property="twitter:card" content="summary_large_image">\n`;
+            metaTags += `<meta property="twitter:title" content="${title}">\n`;
+            metaTags += `<meta property="twitter:description" content="${description}">\n`;
+            
+            document.getElementById('meta-content').textContent = metaTags;
+            document.getElementById('meta-result').style.display = 'block';
+        });
+        
+        // Robots.txt generator
+        document.getElementById('robots-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const url = document.getElementById('robots-url').value;
+            const disallowPaths = document.getElementById('disallow-paths').value.split('\n');
+            
+            const domain = url.replace(/https?:\/\/(www\.)?/, '').replace(/\/$/, '');
+            
+            let robots = `# www.robotstxt.org/\n`;
+            robots += `User-agent: *\n`;
+            
+            disallowPaths.forEach(path => {
+                if (path.trim()) {
+                    robots += `Disallow: ${path.trim()}\n`;
+                }
+            });
+            
+            robots += `\n# Sitemap\n`;
+            robots += `Sitemap: https://${domain}/sitemap.xml\n`;
+            
+            document.getElementById('robots-content').textContent = robots;
+            document.getElementById('robots-result').style.display = 'block';
+        });
+        
+        // Copy to clipboard function
+        function copyContent(elementId) {
+            const content = document.getElementById(elementId).textContent;
+            navigator.clipboard.writeText(content).then(() => {
+                alert('Copied to clipboard!');
+            });
+        }
+    </script>
+</body>
+</html>
